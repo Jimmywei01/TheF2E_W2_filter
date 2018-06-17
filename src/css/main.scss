@@ -1,0 +1,9 @@
+@import "src/css/mixins";
+@import "src/css/normalize";
+@import "src/css/fontawesome";
+@import "src/css/variables";
+//page
+@import "src/css/index.scss";
+@import "header/header.scss";
+@import "content/content.scss";
+@import "footer/footer.scss";
