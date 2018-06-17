@@ -67,4 +67,23 @@
     border-top: $size solid transparent;  
   }
 }
-  
+  // 轉換的結果（rem或vw）、可以識別auto、0、rem、em、vw等不需要轉的單位
+  // scss -> div{margin:rem(10px 10rem 0 auto);}
+  // css -> div{margin: 0.625rem 10rem 0 auto;}
+  // root 預設基礎文字大小
+  @function rem($values) {
+    $root: 16px;
+    $unit: rem;
+    $list: ();
+    @each $v in $values {
+      $res: 0;
+      @if ($v==0 or $v==auto or unit($v)==rem or unit($v)==em or unit($v)==vw or unit($v)==vh) {
+        $res: $v;
+      }
+      @else {
+        $res: ($v + 0px) / $root + $unit;
+      }
+      $list: append($list, $res);
+    }
+    @return $list;
+  }
